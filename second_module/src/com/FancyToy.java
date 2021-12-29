@@ -2,6 +2,7 @@ package com;
 
 import org.junit.Test;
 
+import java.io.CharArrayReader;
 import java.io.IOException;
 import java.nio.CharBuffer;
 import java.util.*;
@@ -9,7 +10,7 @@ import java.lang.String;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Myclass {
+class Myclass {
     private final int i=10;
     public final void print(){
         System.out.println(s);
@@ -64,17 +65,17 @@ class toufactory implements factory{
         return new tou();
     }
 }
-class test{
-    public static void playgame(factory fact){
-        game s = fact.getGame();
-        s.play();
-    }
-
-    public static void main(String[] args) {
-        playgame(new coinfactory());
-        playgame(new toufactory());
-    }
-}
+//class test{
+//    public static void playgame(factory fact){
+//        game s = fact.getGame();
+//        s.play();
+//    }
+//
+//    public static void main(String[] args) {
+//        playgame(new coinfactory());
+//        playgame(new toufactory());
+//    }
+//}
 class Outer{
     class Inner{
 
@@ -259,6 +260,10 @@ class Ioexception extends Exception{
     }
 }
 class Regex{
+    @Test
+    public void test3(){
+        System.out.println("test");
+    }
     public static void main(String[] args) {
         ArrayList<String> strs =new ArrayList<>(Arrays.asList("^Java","\\Breg.*","n.w\\s+h(a|i)s",
         "s?","s*","s+","s{4}","s{1}","s{0,3}"));
@@ -272,6 +277,45 @@ class Regex{
             while (m.find())
                 System.out.println("find!:  "+id+" "+m.group()+" "+m.start()+"-"+m.end());
         }
+    }
+}
+interface HasBatteries{}
+interface Waterproof{}
+interface Shoots{}
+class Toy{
+//    Toy(){
+//        System.out.println("Toy");
+//    }
+    static {
+        System.out.println("lode");   //可以加载但不是实例化
+    }
+//    Toy(int i){}
+}
+public class FancyToy extends Toy implements
+        HasBatteries,Waterproof,Shoots{
+    FancyToy(){
+        System.out.println("FancyToy");
+    }
+
+    public static void main(String[] args) {
+        try {
+            Class c =Class.forName("com.FancyToy");
+            Class up = c.getSuperclass();
+            Object obj = up.newInstance();
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+    @Test
+    public void test_1() {
+        try {
+            Class c =Class.forName("com.FancyToy");
+            Class up = c.getSuperclass();
+//            Object obj = up.newInstance();
+        }catch (Exception e){
+            System.out.println(e);
+        }
+
     }
 }
 
