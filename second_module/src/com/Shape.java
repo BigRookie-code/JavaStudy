@@ -11,11 +11,9 @@ public class Shape {
            Class b = Drive.class;
            b.getSuperclass();
            Stack<Integer> s1 = new Stack<Integer>();
-
            System.out.println(c);
        }
     }
-
 }
 class Base1{}
 class Drive extends Base1{}
